@@ -1,18 +1,14 @@
 import React, { Component } from "react";
+import logo from "../images/logo2.png";
 
 class Login extends Component {
-  login = async () => {
-    const url = "http://localhost:3000/auth/spotify";
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    return data;
-  };
-
   render() {
     return (
       <>
-        <a href="http://localhost:3000/auth/spotify">Logn with spotify</a>
+        <img className="home-logo" src={logo} alt="showhunter logo" />
+        <button>
+          <a href="http://localhost:3000/auth/spotify">Login With Spotify</a>
+        </button>
       </>
     );
   }
