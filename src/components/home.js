@@ -1,6 +1,17 @@
 import React, { Component } from "react";
 
 class Home extends Component {
+  state = {
+    bearer: ""
+  };
+
+  async componentDidMount() {
+    const token = this.props.location.state.bearer;
+    await this.setState({
+      bearer: token
+    });
+  }
+
   onClick() {
     fetch("http://localhost:3000/auth/scan");
   }
