@@ -12,9 +12,9 @@ class Home extends Component {
     });
   }
 
-  onClick() {
-    fetch("http://localhost:3000/auth/scan");
-  }
+  onClick = () => {
+    fetch(`http://localhost:3000/home/scan/${this.state.bearer}`);
+  };
 
   render() {
     return (
@@ -27,3 +27,5 @@ class Home extends Component {
 }
 
 export default Home;
+
+//?bearer=${token}
