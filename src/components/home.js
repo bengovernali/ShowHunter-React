@@ -13,12 +13,6 @@ class Home extends Component {
     });
   }
 
-  /*
-  onClick = () => {
-    fetch(`http://localhost:3000/home/scan/${this.state.bearer}`);
-  };
-  */
-
   handleArtistChange = e => {
     this.setState({
       artist: e.target.value
@@ -53,5 +47,3 @@ class Home extends Component {
 }
 
 export default Home;
-
-//?bearer=${token}
