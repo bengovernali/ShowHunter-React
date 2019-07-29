@@ -5,25 +5,29 @@ import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   state = {
-    bearer: ""
+    token: "",
+    tokenId: ""
   };
 
   componentDidMount() {
     const values = queryString.parse(this.props.location.search);
-    const bearer = values.bearer;
+    const token = values.bearer;
+    const tokenId = values.tokenId;
+
     this.setState({
-      bearer
+      token: token,
+      tokenId: tokenId
     });
   }
 
   render() {
     return (
       <>
-        {!!this.state.bearer ? (
+        {!!this.state.token ? (
           <Redirect
             to={{
               pathname: "/home",
-              state: { bearer: this.state.bearer }
+              state: { token: this.state.token, tokenId: this.state.tokenId }
             }}
           />
         ) : (
