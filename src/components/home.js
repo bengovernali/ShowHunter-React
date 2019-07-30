@@ -13,7 +13,8 @@ class Home extends Component {
     await this.setState({
       token: token,
       tokenId: tokenId,
-      events: []
+      events: [],
+      loading: false
     });
   }
 
@@ -23,8 +24,16 @@ class Home extends Component {
     });
   };
 
+  runLoadIcon = () => {
+    this.setState({
+      loading: true
+    });
+    console.log("LOADING ", this.state);
+  };
+
   handleSubmit = e => {
     e.preventDefault();
+    this.runLoadIcon();
     const artist = this.state.artist;
     const token = this.state.token;
     const tokenId = this.state.tokenId;
@@ -34,7 +43,8 @@ class Home extends Component {
       .then(result => {
         console.log(result);
         this.setState({
-          events: result
+          events: result,
+          loading: false
         });
       })
       .then(() => console.log(this.state));
