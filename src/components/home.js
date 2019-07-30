@@ -12,7 +12,9 @@ class Home extends Component {
     const tokenId = this.props.location.state.tokenId;
     await this.setState({
       token: token,
-      tokenId: tokenId
+      tokenId: tokenId,
+      events: [],
+      loading: false
     });
   }
 
@@ -22,15 +24,30 @@ class Home extends Component {
     });
   };
 
+  runLoadIcon = () => {
+    this.setState({
+      loading: true
+    });
+    console.log("LOADING ", this.state);
+  };
+
   handleSubmit = e => {
     e.preventDefault();
+    this.runLoadIcon();
     const artist = this.state.artist;
     const token = this.state.token;
     const tokenId = this.state.tokenId;
     const url = `http://localhost:3000/home/scan/${token}/${tokenId}/${artist}`;
     fetch(url)
       .then(response => response.json())
-      .then(result => console.log(result));
+      .then(result => {
+        console.log(result);
+        this.setState({
+          events: result,
+          loading: false
+        });
+      })
+      .then(() => console.log(this.state));
   };
 
   render() {
