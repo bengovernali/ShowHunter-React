@@ -87,6 +87,8 @@ class Home extends Component {
                   venue={`${event.venue}`}
                   date={`${event.date}`}
                   time={`${event.time}`}
+                  image={`${event.image}`}
+                  url={`${event.url}`}
                 />
               );
             })}

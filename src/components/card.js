@@ -4,7 +4,10 @@ class Card extends Component {
   render() {
     return (
       <div className="card">
-        <h3>{this.props.name}</h3>
+        <img className="card-image" src={this.props.image} alt="event" />
+        <a target="_blank" rel="noopener noreferrer" href={this.props.url}>
+          {this.props.name}
+        </a>
         <h4>{this.props.venue}</h4>
         <h4>{this.props.date}</h4>
         <h4>{this.props.time}</h4>
