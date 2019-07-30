@@ -64,6 +64,10 @@
   }
 }
 
-.loading-hide {
-  display: none;
+.card {
+  margin: auto;
+}
+
+.card-image {
+  max-width: 60%;
 }
