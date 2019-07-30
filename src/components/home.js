@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Loading from "./loading";
 
 class Home extends Component {
   state = {
@@ -14,7 +15,8 @@ class Home extends Component {
       token: token,
       tokenId: tokenId,
       events: [],
-      loading: false
+      loading: false,
+      loaded: false
     });
   }
 
@@ -44,13 +46,15 @@ class Home extends Component {
         console.log(result);
         this.setState({
           events: result,
-          loading: false
+          loading: false,
+          loaded: true
         });
       })
       .then(() => console.log(this.state));
   };
 
   render() {
+    const loading = this.state.loading;
     return (
       <>
         <h1>This is the homepage</h1>
@@ -64,6 +68,7 @@ class Home extends Component {
           />
           <input type="submit" value="Submit" />
         </form>
+        {loading ? <Loading /> : null}
       </>
     );
   }
