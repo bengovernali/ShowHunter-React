@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Loading from "./loading";
+import Card from "./card";
 
 class Home extends Component {
   state = {
@@ -55,6 +56,8 @@ class Home extends Component {
 
   render() {
     const loading = this.state.loading;
+    const events = this.state.events;
+    const loaded = this.state.loaded;
     return (
       <>
         <h1>This is the homepage</h1>
@@ -68,7 +71,27 @@ class Home extends Component {
           />
           <input type="submit" value="Submit" />
         </form>
-        {loading ? <Loading /> : null}
+        {!!loading ? <Loading /> : null}
+        {!!events && !!loaded ? (
+          <div className="card-container">
+            {events.events.map(event => {
+              return (
+                <Card
+                  className="card"
+                  name={`${event.name}`}
+                  venue={`${event.venue}`}
+                  date={`${event.date}`}
+                  time={`${event.time}`}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <p>
+            There are no upcoming events in your area for this band's related
+            artists
+          </p>
+        )}
       </>
     );
   }
