@@ -4,19 +4,18 @@ import Card from "./card";
 
 class Home extends Component {
   state = {
-    token: "",
     tokenId: "",
     artist: "",
+    zip: "",
+    radius: "",
     events: [],
     loading: false,
     loaded: false
   };
 
   async componentDidMount() {
-    const token = this.props.location.state.token;
     const tokenId = this.props.location.state.tokenId;
     await this.setState({
-      token: token,
       tokenId: tokenId
     });
   }
@@ -24,6 +23,18 @@ class Home extends Component {
   handleArtistChange = e => {
     this.setState({
       artist: e.target.value
+    });
+  };
+
+  handleZipChange = e => {
+    this.setState({
+      zip: e.target.value
+    });
+  };
+
+  handleRadiusChange = e => {
+    this.setState({
+      radius: e.target.value
     });
   };
 
@@ -40,9 +51,10 @@ class Home extends Component {
     e.preventDefault();
     this.runLoadIcon();
     const artist = this.state.artist;
-    const token = this.state.token;
+    const zip = this.state.zip;
+    const radius = this.state.radius;
     const tokenId = this.state.tokenId;
-    const url = `http://localhost:3000/home/scan/${token}/${tokenId}/${artist}`;
+    const url = `http://localhost:3000/home/scan/${tokenId}/${artist}/${zip}/${radius}`;
     fetch(url)
       .then(response => response.json())
       .then(result => result)
@@ -65,14 +77,31 @@ class Home extends Component {
     return (
       <>
         <h1>This is the homepage</h1>
+
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Please Enter an Artist"
             onChange={this.handleArtistChange}
-            name="title"
-            value={this.state.title}
+            name="artist"
           />
+          <input
+            type="text"
+            placeholder="Please Enter Your Zip Code"
+            onChange={this.handleZipChange}
+            name="zip"
+          />
+          <select value={this.state.value} onChange={this.handleRadiusChange}>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="250">250</option>
+            <option value="500">500</option>
+          </select>
           <input type="submit" value="Submit" />
         </form>
         {!!loading ? <Loading /> : null}
@@ -105,3 +134,15 @@ class Home extends Component {
 }
 
 export default Home;
+
+/*
+<form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            placeholder="Please Enter an Artist"
+            onChange={this.handleArtistChange}
+            name="artist"
+          />
+          <input type="submit" value="Submit" />
+        </form>
+        */

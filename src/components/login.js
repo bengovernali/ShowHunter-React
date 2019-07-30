@@ -11,11 +11,9 @@ class Login extends Component {
 
   componentDidMount() {
     const values = queryString.parse(this.props.location.search);
-    const token = values.bearer;
     const tokenId = values.tokenId;
 
     this.setState({
-      token: token,
       tokenId: tokenId
     });
   }
@@ -23,11 +21,11 @@ class Login extends Component {
   render() {
     return (
       <>
-        {!!this.state.token ? (
+        {!!this.state.tokenId ? (
           <Redirect
             to={{
               pathname: "/home",
-              state: { token: this.state.token, tokenId: this.state.tokenId }
+              state: { tokenId: this.state.tokenId }
             }}
           />
         ) : (
