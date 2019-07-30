@@ -12,7 +12,8 @@ class Home extends Component {
     const tokenId = this.props.location.state.tokenId;
     await this.setState({
       token: token,
-      tokenId: tokenId
+      tokenId: tokenId,
+      events: []
     });
   }
 
@@ -30,7 +31,13 @@ class Home extends Component {
     const url = `http://localhost:3000/home/scan/${token}/${tokenId}/${artist}`;
     fetch(url)
       .then(response => response.json())
-      .then(result => console.log(result));
+      .then(result => {
+        console.log(result);
+        this.setState({
+          events: result
+        });
+      })
+      .then(() => console.log(this.state));
   };
 
   render() {
