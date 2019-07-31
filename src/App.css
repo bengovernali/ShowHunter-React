@@ -17,9 +17,25 @@
   color: #61dafb;
 }
 
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+
 .home-logo {
-  width: 80%;
-  margin: auto;
+  display: block;
+  width: 90vw;
+  margin: 10vh auto;
+}
+
+.login-link {
+  text-decoration: none;
+  color: white;
+}
+
+.login-link:hover {
+  font-size: 1.2em;
 }
 
 /* Loading Icon Styles */
