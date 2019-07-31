@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Loading from "./loading";
 import Card from "./card";
+import { Redirect } from "react-router-dom";
 
 class Home extends Component {
   state = {
@@ -10,7 +11,8 @@ class Home extends Component {
     radius: "",
     events: [],
     loading: false,
-    loaded: false
+    loaded: false,
+    logout: false
   };
 
   async componentDidMount() {
@@ -70,12 +72,32 @@ class Home extends Component {
       .then(() => console.log(this.state));
   };
 
+  logout = () => {
+    const tokenId = this.state.tokenId;
+    const url = `http://localhost:3000/logout/${tokenId}`;
+    fetch(url).then(() => {
+      this.setState({
+        logout: true
+      });
+    });
+  };
+
   render() {
     const loading = this.state.loading;
     const events = this.state.events;
     const loaded = this.state.loaded;
     return (
       <>
+        {!!this.state.logout ? (
+          <Redirect
+            to={{
+              pathname: "/"
+            }}
+          />
+        ) : null}
+        <button className="logoutButton" onClick={this.logout}>
+          Logout
+        </button>
         <h1>This is the homepage</h1>
 
         <form onSubmit={this.handleSubmit}>
@@ -134,15 +156,3 @@ class Home extends Component {
 }
 
 export default Home;
-
-/*
-<form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            placeholder="Please Enter an Artist"
-            onChange={this.handleArtistChange}
-            name="artist"
-          />
-          <input type="submit" value="Submit" />
-        </form>
-        */
