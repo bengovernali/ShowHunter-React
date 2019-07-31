@@ -113,25 +113,11 @@ class Home extends Component {
           <input
             className="search-text"
             type="text"
-            placeholder="Please Enter Your Zip Code"
+            placeholder="Please Enter Your City"
             onChange={this.handleZipChange}
             name="zip"
           />
-          <div className="form-end">
-            <label>Radius:</label>
-            <select value={this.state.value} onChange={this.handleRadiusChange}>
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-              <option value="20">20</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-              <option value="250">250</option>
-              <option value="500">500</option>
-            </select>
-            <input className="submit" type="submit" value="Submit" />
-          </div>
+          <input className="submit" type="submit" value="Submit" />
         </form>
         {!!loading ? <Loading /> : null}
         {!!events.events && !!loaded ? (
