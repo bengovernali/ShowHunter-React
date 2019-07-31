@@ -8,9 +8,9 @@ class Card extends Component {
         <a target="_blank" rel="noopener noreferrer" href={this.props.url}>
           {this.props.name}
         </a>
-        <h4>{this.props.venue}</h4>
-        <h4>{this.props.date}</h4>
-        <h4>{this.props.time}</h4>
+        <p>{this.props.venue}</p>
+        <p>{this.props.date}</p>
+        <p>{this.props.time}</p>
       </div>
     );
   }

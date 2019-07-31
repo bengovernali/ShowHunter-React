@@ -1,22 +1,10 @@
 .App {
-  text-align: center;
   color: white;
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-  color: #61dafb;
-}
-
+/* Login Page Styles */
 .login-page {
   width: 100vw;
   height: 100vh;
@@ -31,41 +19,111 @@
 
 .login-link {
   text-decoration: none;
+  font-weight: bold;
   color: white;
+  background-color: #1db954;
+  padding: 10px 20px;
+  border-radius: 20px;
 }
 
 .login-link:hover {
   font-size: 1.2em;
 }
 
+/* Home page styles */
+.nav {
+  margin-top: 1vh;
+  width: 97vw;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.site-logo {
+  width: 70vw;
+  margin-top: 3vh;
+}
+
+.logout-button {
+  text-decoration: none;
+  padding: 2vw;
+  border-radius: 2vw;
+  font-weight: bold;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.search-text {
+  text-align: center;
+  font-weight: bold;
+  margin: 1vh;
+  width: 70vw;
+  padding: 10px 5px;
+  border-radius: 5px;
+}
+
+.form-end {
+  width: 60vw;
+  margin: 1vh auto 2vh auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+select {
+  font-weight: bold;
+}
+
+.submit {
+  border-radius: 2vw;
+  font-weight: bold;
+}
+
+.submit:hover {
+  padding: 1vw;
+}
+
 /* Loading Icon Styles */
 .loading {
-  position: absolute;
+  margin: auto;
+  margin-top: 10vh;
+  width: 40vw;
+  display: flex;
+  justify-content: space-between;
 }
+
 .loading-bar {
   display: inline-block;
-  width: 30px;
-  height: 100px;
+  width: 8vw;
+  height: 8vh;
   border-radius: 4px;
   animation: loading 1s ease-in-out infinite;
+  align-self: flex-end;
 }
+
 .loading-bar:nth-child(1) {
   background-color: white;
   animation-delay: 0;
-  height: 185px;
+  height: 18vh;
 }
+
 .loading-bar:nth-child(2) {
   background-color: white;
   animation-delay: 0.09s;
 }
+
 .loading-bar:nth-child(3) {
   background-color: white;
   animation-delay: 0.18s;
 }
+
 .loading-bar:nth-child(4) {
   background-color: white;
   animation-delay: 0.27s;
-  height: 150px;
+  height: 15vh;
 }
 
 @keyframes loading {
@@ -80,10 +138,43 @@
   }
 }
 
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
 .card {
   margin: auto;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: grey;
+  margin: 5vh auto;
+  border-radius: 10px;
 }
 
 .card-image {
-  max-width: 60%;
+  width: 240px;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.card a {
+  margin: 2vh;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+card a:hover {
+  font-size: 18px;
+}
+
+.card p {
+  margin: 10px;
 }

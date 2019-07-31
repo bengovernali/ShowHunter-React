@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import logo from "../images/logo2.png";
 import Loading from "./loading";
 import Card from "./card";
 import { Redirect } from "react-router-dom";
@@ -95,36 +96,42 @@ class Home extends Component {
             }}
           />
         ) : null}
-        <button className="logoutButton" onClick={this.logout}>
-          Logout
-        </button>
-        <h1>This is the homepage</h1>
-
-        <form onSubmit={this.handleSubmit}>
+        <nav className="nav">
+          <button className="logout-button" onClick={this.logout}>
+            Logout
+          </button>
+        </nav>
+        <img className="site-logo" src={logo} alt="showhunter logo" />
+        <form className="search-form" onSubmit={this.handleSubmit}>
           <input
+            className="search-text"
             type="text"
             placeholder="Please Enter an Artist"
             onChange={this.handleArtistChange}
             name="artist"
           />
           <input
+            className="search-text"
             type="text"
             placeholder="Please Enter Your Zip Code"
             onChange={this.handleZipChange}
             name="zip"
           />
-          <select value={this.state.value} onChange={this.handleRadiusChange}>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-            <option value="250">250</option>
-            <option value="500">500</option>
-          </select>
-          <input type="submit" value="Submit" />
+          <div className="form-end">
+            <label>Radius:</label>
+            <select value={this.state.value} onChange={this.handleRadiusChange}>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="250">250</option>
+              <option value="500">500</option>
+            </select>
+            <input className="submit" type="submit" value="Submit" />
+          </div>
         </form>
         {!!loading ? <Loading /> : null}
         {!!events.events && !!loaded ? (
