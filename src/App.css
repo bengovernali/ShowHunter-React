@@ -190,7 +190,7 @@ card a:hover {
   margin: 5vh auto;
 }
 
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 760px) and (min-height: 1020px) {
   .login-link {
     font-size: 26px;
   }
@@ -243,41 +243,7 @@ card a:hover {
   font-size: 24px;
 }
 
-@media screen and (min-width: 1020px) {
-  .login-link {
-    font-size: 36px;
-  }
-
-  .login-link:hover {
-    font-size: 40px;
-  }
-
-  .logout-button {
-    font-size: 26px;
-  }
-
-  .search-text {
-    font-size: 30px;
-  }
-
-  .submit {
-    font-size: 26px;
-  }
-
-  .card a {
-    font-size: 32px;
-  }
-
-  .card p {
-    font-size: 30px;
-  }
-
-  .null-result {
-    font-size: 32px;
-  }
-}
-
-@media screen and (min-width: 720px) and (max-height: 1080px) {
+@media screen and (min-width: 1000px) and (max-height: 1100px) {
   .home-logo {
     width: 50%;
     margin-top: 1vh;
