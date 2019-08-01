@@ -33,7 +33,7 @@
 /* Home page styles */
 .nav {
   margin-top: 1vh;
-  width: 97vw;
+  width: 100vw;
   display: flex;
   justify-content: flex-end;
 }
@@ -44,10 +44,17 @@
 }
 
 .logout-button {
+  margin-right: 1vh;
   text-decoration: none;
   padding: 2vw;
-  border-radius: 2vw;
+  border: none;
+  border-radius: 5px;
   font-weight: bold;
+  background-color: white;
+}
+
+.logout-button:hover {
+  padding: 3vw;
 }
 
 .search-form {
@@ -73,13 +80,12 @@
   justify-content: space-between;
 }
 
-select {
-  font-weight: bold;
-}
-
 .submit {
-  border-radius: 2vw;
+  border: none;
+  background-color: white;
+  border-radius: 5px;
   font-weight: bold;
+  margin-top: 1vh;
 }
 
 .submit:hover {
@@ -151,7 +157,7 @@ select {
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  background-color: grey;
+  background-color: rgba(128, 128, 128, 0.4);
   margin: 5vh auto;
   border-radius: 10px;
 }
