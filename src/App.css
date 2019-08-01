@@ -164,7 +164,7 @@
 
 .card-image {
   width: 240px;
-  margin: auto;
+  margin: 0 auto;
   margin-top: 20px;
   border-radius: 10px;
 }
@@ -183,4 +183,96 @@ card a:hover {
 
 .card p {
   margin: 10px;
+}
+
+.null-result {
+  width: 90vw;
+  margin: 5vh auto;
+}
+
+@media screen and (min-width: 760px) {
+  .login-link {
+    font-size: 26px;
+  }
+
+  .login-link:hover {
+    font-size: 28px;
+  }
+
+  .logout-button {
+    font-size: 20px;
+    padding: 1vw;
+  }
+
+  .site-logo {
+    margin-top: 0;
+  }
+
+  .search-text {
+    font-size: 20px;
+  }
+
+  .submit {
+    font-size: 20px;
+    padding: 5px;
+  }
+
+  .card-container {
+    margin-top: 5vw;
+  }
+
+  .card {
+    width: 40vw;
+    margin-top: 0;
+  }
+
+  .card-image {
+    width: 80%;
+  }
+
+  .card a {
+    font-size: 24px;
+  }
+
+  .card p {
+    font-size: 20px;
+  }
+}
+
+.null-result {
+  font-size: 24px;
+}
+
+@media screen and (min-width: 1020px) {
+  .login-link {
+    font-size: 36px;
+  }
+
+  .login-link:hover {
+    font-size: 40px;
+  }
+
+  .logout-button {
+    font-size: 26px;
+  }
+
+  .search-text {
+    font-size: 30px;
+  }
+
+  .submit {
+    font-size: 26px;
+  }
+
+  .card a {
+    font-size: 32px;
+  }
+
+  .card p {
+    font-size: 30px;
+  }
+
+  .null-result {
+    font-size: 32px;
+  }
 }

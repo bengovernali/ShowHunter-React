@@ -138,9 +138,9 @@ class Home extends Component {
             })}
           </div>
         ) : !events.events && !!loaded ? (
-          <p>
-            There are no upcoming events in your area for this band's related
-            artists
+          <p className="null-result">
+            Sorry, there are no upcoming events in your area for this band's
+            related artists
           </p>
         ) : null}
       </>
