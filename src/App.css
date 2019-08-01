@@ -46,7 +46,7 @@
 .logout-button {
   margin-right: 1vh;
   text-decoration: none;
-  padding: 2vw;
+  padding: 1vw;
   border: none;
   border-radius: 5px;
   font-weight: bold;
@@ -54,7 +54,7 @@
 }
 
 .logout-button:hover {
-  padding: 3vw;
+  font-size: 13px;
 }
 
 .search-form {
@@ -89,7 +89,7 @@
 }
 
 .submit:hover {
-  padding: 1vw;
+  font-size: 13px;
 }
 
 /* Loading Icon Styles */
@@ -204,6 +204,10 @@ card a:hover {
     padding: 1vw;
   }
 
+  .logout-button:hover {
+    font-size: 21px;
+  }
+
   .site-logo {
     margin-top: 0;
   }
@@ -215,6 +219,10 @@ card a:hover {
   .submit {
     font-size: 20px;
     padding: 5px;
+  }
+
+  .submit:hover {
+    font-size: 21px;
   }
 
   .card-container {
@@ -256,6 +264,10 @@ card a:hover {
   .logout-button {
     padding: 1vh;
     font-size: 16px;
+  }
+
+  .logout-button {
+    font-size: 17px;
   }
 
   .search-text {
