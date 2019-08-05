@@ -1,68 +1,28 @@
+# ShowHunter
+
+ShowHunter takes an artist and city as input and returns a series of upcoming events in the area for that artist's Spotify related artists. The back end is written in Node and the front end is written in React.
+
+## Login
+
+Upon reaching the front page, the user sees the site logo and a green 'Login With Spotify' button. This project utilizes Spotify to create related artist data. In order to do this, Spotify authorization flow is required. The user is redirected to a Spotify login page, and upon completion of login is redirected to the ShowHunter home page.
+
+Auth tokens received during login are stored in a database on the same server that Node is run on. These tokens can only be used for 10 minutes and are deleted from the database upon logout. Rather than send these tokens directly to the front end, ShowHunter sends the Id they are assigned to the home page. This becomes important when searching through artist data later.
+
+## Event Search
+
+The user enters an artist and a city into the search form. This triggers a series of functions that result in a set of event cards being displayed on the front end. On clicking the submit button, the artist, city, and token Id are sent to the back end, and a loading icon animation begins.
+
+ShowHunter searches the database for a token that matches that token Id. It then runs a search for the artist's Spotify Id, which is used to find the related artists. With an array of 21 artists (including the artist searched), ShowHunter then makes a series of API requests to Ticketmaster, requesting any events for those artists in the desired city. If it finds one, it creates an object with the event name, venue, date, time, ticket purchase url, and image url. These will be stored in an array of events that are then sent to the front end as a json object to create cards.
+
+Ticketmaster has a limit to how many requests can be made to their API at once, so a timeout of 1 second is used for each request. This leads the entire search process to last no less than 21 seconds. When the search is over and data is received on the front end, the loading animation stops and one of two things will happen. If the search found some upcoming events, it will display them as cards. If not, it will display "Sorry, there are no upcoming events in your area".
+
+Initiating another search will clear the previous search results and display the loading animation again.
+
+## Logout
+
+A logout button is also displayed on the home page. When the user is done with ShowHunter, the logout button will trigger a deletion of their token from the database and redirect to the front page.
+
+## Technologies
+
+ShowHunter is written using a React front end and Node back end. The back end was created using express-generator.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

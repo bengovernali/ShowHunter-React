@@ -1,22 +1,43 @@
 import React, { Component } from "react";
+import logo from "../images/logo2.png";
+import queryString from "query-string";
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
-  login = async () => {
-    const url = "http://localhost:3000/auth/spotify";
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    return data;
+  state = {
+    token: "",
+    tokenId: ""
   };
+
+  componentDidMount() {
+    const values = queryString.parse(this.props.location.search);
+    const tokenId = values.tokenId;
+
+    this.setState({
+      tokenId: tokenId
+    });
+  }
 
   render() {
     return (
-      <>
-        <button onClick={this.login}>
-          Login with Spotify
-          {/* /<img src="../images/spotify.svg" alt="spotify-login" /> */}
-        </button>
-      </>
+      <div className="login-page">
+        {!!this.state.tokenId ? (
+          <Redirect
+            to={{
+              pathname: "/home",
+              state: { tokenId: this.state.tokenId }
+            }}
+          />
+        ) : (
+          <>
+            <img className="home-logo" src={logo} alt="showhunter logo" />
+            <a className="login-link" href="http://localhost:3000/auth/spotify">
+              Login With Spotify
+            </a>
+          </>
+        )}
+      </div>
+
     );
   }
 }
