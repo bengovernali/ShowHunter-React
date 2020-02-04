@@ -31,7 +31,10 @@ class Login extends Component {
         ) : (
           <>
             <img className="home-logo" src={logo} alt="showhunter logo" />
-            <a className="login-link" href="http://localhost:3000/auth/spotify">
+            <a
+              className="login-link"
+              href="https://backend.showhunter.live/auth/spotify"
+            >
               Login With Spotify
             </a>
           </>

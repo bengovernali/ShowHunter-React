@@ -57,7 +57,7 @@ class Home extends Component {
     const zip = this.state.zip;
     const radius = this.state.radius;
     const tokenId = this.state.tokenId;
-    const url = `http://localhost:3000/home/scan/${tokenId}/${artist}/${zip}/${radius}`;
+    const url = `https://backend.showhunter.live/home/scan/${tokenId}/${artist}/${zip}/${radius}`;
     fetch(url)
       .then(response => response.json())
       .then(result => result)
@@ -75,7 +75,7 @@ class Home extends Component {
 
   logout = () => {
     const tokenId = this.state.tokenId;
-    const url = `http://localhost:3000/logout/${tokenId}`;
+    const url = `https://backend.showhunter.live/logout/${tokenId}`;
     fetch(url).then(() => {
       this.setState({
         logout: true
